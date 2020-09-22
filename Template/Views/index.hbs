@@ -91,9 +91,11 @@
         var location = data[index].location
         var Phone = data[index].Phone
         var email = data[index].email
+        var price_ = data[index].price
      const t =`<article class="item" ><img src="${imageurl}" alt="item">
         <h3>${short_description}</h3>
         <img src="./img/location.png" alt="location" class="location"><h6 class="location-text">${location}</h4>
+        <h3>${price_}</h3>
         <input type="button" value="call">
         <input type="button" value="send email"> </article>`
         div.innerHTML += t
