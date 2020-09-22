@@ -18,4 +18,4 @@ app.get('/adminpanel',(req,res)=>{
     res.render('adminpanel.hbs')
 })
 app.use(client)
-app.listen(3000)
+app.listen(process.env.PORT || 3000)
