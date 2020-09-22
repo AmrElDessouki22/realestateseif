@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap" rel="stylesheet">
+    <title>HTI real estate</title>
+</head>
+<body>
+ 
+    <nav>
+        <img src="../img/qq.png" alt="logo">
+        
+        <ul class="nav-item">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">New projects</a></li>
+            <li><a href="#">Find agent</a></li>
+            <li><a href="#">Blog</a></li>
+        </ul>
+        
+    </nav>
+    
+    <section class="search">
+        <div class="search-inside">
+            <form action="#" method="GET" class="form-left">
+                <select id="type">
+                    <option value="Buy">buy</option>
+                    <option value="Rent">Rent</option>
+                    <option value="Commercial buy">Commercial buy</option>
+                    <option value="Commercial rent">Commercial rent</option>
+                </select>
+                <select id="type">
+                    <option value="Apartment">Apartment</option>
+                    <option value="Villa">Villa</option>
+                    <option value="Townhouse">Townhouse</option>
+                    <option value="Compound">Compound</option>
+                </select>
+                <select id="type">
+                    <option value="Min. price" >Min. price</option>
+                    <option value="200000">200,000 EGP</option>
+                    <option value="600000">600,000 EGP</option>
+                    <option value="1000000">1,000,000 EGP</option>
+                </select>
+                <select id="type">
+                    <option value="Max. price" >Max. price</option>
+                    <option value="2000000">2,000,000 EGP</option>
+                    <option value="6000000">6,000,000 EGP</option>
+                    <option value="10000000">10,000,000 EGP</option>
+                </select>
+                <select id="type">
+                    <option value="Min. bed" >Min. bed</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+                <select id="type">
+                    <option value="Max. bed" >Max. bed</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                </select>
+                
+                <input type="search" placeholder="ex cairo" class="city">
+                <button type="submit" class="find">Find</button>
+            </form>
+        </div>
+    </section>
+    
+    <div  id="items"></div>
+    <script>
+        const url = 'http://localhost:3000/'
+        const div = document.getElementById('items')
+         getdata();
+        async function getdata(){
+            
+            const response = await fetch(url+'getitems',{
+                method:'GET',
+                headers:{'Content-Type':'application/json'}
+            })
+              if(response.status == 200)
+             {   
+              setdata(await response.json())
+             }
+            
+        }
+        function setdata(data){
+        for (let index = 0; index < data.length; index++) {
+        var imageurl = data[index].image_url
+        var short_description = data[index].short_description
+        var location = data[index].location
+        var Phone = data[index].Phone
+        var email = data[index].email
+     const t =`<article class="item" ><img src="${imageurl}" alt="item">
+        <h3>${short_description}</h3>
+        <img src="./img/location.png" alt="location" class="location"><h6 class="location-text">${location}</h4>
+        <input type="button" value="call">
+        <input type="button" value="send email"> </article>`
+        div.innerHTML += t
+
+    }
+
+}
+    </script>
+</body>
+</html>

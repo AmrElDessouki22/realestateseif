@@ -1,0 +1,153 @@
+body,input,button{
+    margin: 0;
+    font-family: 'Josefin Sans', sans-serif;
+}
+nav{
+    display: block;
+    background-color: white;
+    text-align: center;
+}
+ img{
+     margin-left: 15px;
+    width: 100px;
+    display: inline-block;
+}
+.nav-item{
+    display: inline-block;
+    margin-top: 50px;
+    vertical-align: top;
+    
+
+}
+.nav-item li{
+    display: inline-block;
+    list-style-type: none;
+}
+.nav-item li a{
+    transition: all .03s;
+    text-decoration: none;
+    color: #ee844d;
+    margin: 10px;
+    padding: 20px;
+}
+.nav-item li a:hover{
+    
+    color: wheat;
+  
+}
+.search{
+    background-image: url('https://images.unsplash.com/photo-1542228227152-511d6b6bbe1c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1951&q=80');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center bottom;
+    display: block;
+    transition: all .6s;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    
+
+}
+#type{
+    float: left;
+    width: 20%;
+    outline: none;
+    margin-top: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    margin-left: 30px;
+    font-size: 14px;
+    color:#ee844d ;
+    border: 6px solid transparent;
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+    appearance:none;
+    border-radius: 10px;
+    background:  url("../img/arrow.png") no-repeat 100px center;
+    background-color: white;
+    padding: 3px;
+}
+
+
+.search-inside{
+    width: 60%;
+    margin: 5rem auto;
+    background-color: #ee834da1;
+    padding: 30px;
+    border-radius: 10px;
+
+}
+.city{
+    margin-left: 30px;
+    width: 30%;
+    height: 35px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    margin-top: 7px;
+    vertical-align: top;
+    color: #ee844d;
+    font-size: 20px;
+}
+.city::placeholder{
+   
+    color: #ee844d;
+    padding: 5px;
+    
+}
+.find{
+    margin-top: 8px;
+    width: 100px;
+    background-color: white;
+    border-radius: 5px;
+    font-size: 20px;
+    padding: 6px ;
+    border: none;
+    outline: none;
+    color: #ee844d ;
+
+    cursor: pointer;
+}
+.find:hover{
+    color:white;
+    background-color: #ee590f;
+    transition: all .9s;
+}
+.item{
+    margin-top: 20px;
+    display: inline-block;
+    width: 48%;
+    text-align: center;
+}
+.item img:first-child{
+    
+    width: 70%;
+}
+.item input[type=button]
+{
+    background-color:#ee844d;
+    color: white;
+    width: 30%;
+    margin-left: 20px;
+    margin-right: 20px;
+    cursor: pointer;
+    border: none;
+    transition: transform 1s;
+    outline: none;
+    margin-bottom: 40px;
+    padding: 10px;
+}
+.item input[type=button]:hover
+{
+    transform: scale(1.1);
+}
+.location{
+    display: inline-block;
+    width: 30px;
+    margin-left: 80px;
+}
+.location-text{
+    display: inline-block;
+    vertical-align: top;
+    width: 70%;
+}

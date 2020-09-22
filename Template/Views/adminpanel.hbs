@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/adminpanel.css">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <img src="./img/qq.png" alt="logo">
+        
+        <ul class="nav-item">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">New projects</a></li>
+            <li><a href="#">Find agent</a></li>
+            <li><a href="#">Blog</a></li>
+            <li>wellcome, MR.Seif</li>
+        </ul>
+        
+    </nav>
+    <hr >
+    <h3 style=" color:#ee844d ;width: 200px; margin: 35px auto;text-align: center;font-size: 30px;">Add new item</h3>
+    <article class="add-item">
+        
+        <input id="url" name="url" type="url"  class="url" placeholder="property image url ">
+        <input id="shortdescrption" type="text" class="short-description" placeholder="short description">
+        <input id="location" type="location" class="location" placeholder="location">
+        <input id="email" type="email" class="email" placeholder="email">
+         <input id="price" type="text" class="email" placeholder="price">
+        <input id="phone" type="number" class="phne" placeholder="phone">
+        <input  id="additem_data" type="button" value="add item">
+    
+    </article>
+    <hr>
+
+    <h3 style=" color:#ee844d ;width: 200px; margin: 35px auto;text-align: center;font-size: 30px;">Control item</h3>
+
+    
+    <div id="items"></div>
+        
+    
+
+
+</body>
+  <script>
+        const url = 'http://localhost:3000/'
+        const div = document.getElementById('items')
+        const url_img = document.getElementById('url')
+        const location_ = document.getElementById('location')
+        const shortdescrption = document.getElementById('shortdescrption')
+        const phone_ = document.getElementById('phone')
+        const email_ = document.getElementById('email')
+        const price = document.getElementById('price')
+        
+        const senddata = document.getElementById('additem_data')
+        senddata.addEventListener('click',setitem)
+        async function setitem(){
+             
+            const body_ = {price:price.value,image_url:url_img.value,short_description:shortdescrption.value,location:location_.value,Phone:phone_.value,email:email_.value}
+            const response = await fetch(url+'additem',{
+                method:"POST",
+                body:JSON.stringify(body_),
+                headers:{'Content-Type':'application/json'}
+            })
+            if(response.status == 201){
+                return window.location.reload();
+            }else
+            {
+                alert('something going wrong')
+            }
+        }
+         getdata();
+        async function getdata(){
+            
+            const response = await fetch(url+'getitems',{
+                method:'GET',
+                headers:{'Content-Type':'application/json'}
+            })
+              if(response.status == 200)
+             {   
+              setdata(await response.json())
+             }
+            
+        }
+        function setdata(data){
+            console.log(data);
+        for (let index = 0; index < data.length; index++) {
+        var imageurl = data[index].image_url
+        var short_description = data[index].short_description
+        var location = data[index].location
+        var Phone = data[index].Phone
+        var email = data[index].email
+        var price_ = data[index].price
+     const t =`<article class="item" ><img src="${imageurl}" alt="item">
+        <input type="url" class="url-image-edit" value="${imageurl}">
+        <h3 style="width: 50%;display: inline-block;color: #ee844d;">Image url</h3>
+        <input style="width: 40%;" type="text" class="url-image-edit" value="${short_description}">
+        <h3 style="width: 40%;display: inline-block;color: #ee844d;">short description</h3>
+        <input type="text" class="url-image-edit"  value="${location}">
+        <h3 style="width: 50%;display: inline-block;color: #ee844d;">location</h3>
+        <input type="number" class="url-image-edit"  value="${Phone}">
+        <h3 style="width: 50%;display: inline-block;color: #ee844d;">Phone</h3>
+        <input type="email" class="url-image-edit"  value="${email}">
+        <h3 style="width: 50%;display: inline-block;color: #ee844d;">email</h3>
+        <input type="text" class="url-image-edit"  value="${price_}">
+        <h3 style="width: 50%;display: inline-block;color: #ee844d;">price</h3>
+        <input type="button" value="Save">
+        <input type="button" value="Delete">
+        <hr></article>
+        `
+        div.innerHTML += t
+
+    }
+
+}
+    </script>
+</html>
